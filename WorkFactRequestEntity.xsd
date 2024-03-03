@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+
+   xmlns:hints="urn://x-artefacts-it-ru/dob/xml-editor/rendering-hints/1.6"
+	xmlns:p321genHints="urn://x-artefacts-it-ru/p321/GenerationHints/1.0"
+	xmlns:p321hints="urn://x-artefacts-it-ru/p321/RenderingHints/1.0"
+
+	xmlns:ns="urn://x-artefacts-it-ru/p321-2/WorkFactEntity/1.0"
+	xmlns:ct="urn://x-artefacts-it-ru/p321-2/WorkFactComplexTypes/1.0"
+	targetNamespace="urn://x-artefacts-it-ru/p321-2/WorkFactEntity/1.0"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<!-- Импорт пространства имен -->
+	<xs:import namespace="urn://x-artefacts-it-ru/dob/xml-editor/rendering-hints/1.6" />
+	<xs:import namespace="urn://x-artefacts-it-ru/p321-2/WorkFactComplexTypes/1.0" />
+
+	<!-- Определяем элемент WorkFactEntity -->
+	<xs:element name="WorkFactEntity"
+	hints:rus="Запрос на получение сведений о факте осуществления трудовой деятельности"
+	hints:dataItemId="root"
+	p321hints:entityType="Entity" 
+	p321hints:entityPrefix="PFR_WORKFACT"
+	p321hints:entityName="Бизнес-данные запроса на предоставление сведения о факте осуществления трудовой деятельности"
+	p321hints:beginDate="01.01.2015"
+	p321hints:endDate="01.01.2099">
+	<xs:complexType>
+				<xs:sequence>
+					<xs:element name="guid" type="xs:string" hints:omit="true" p321hints:formVisible="false" />
+					<xs:element name="number" type="xs:string" minOccurs="0" hints:rus="Внутренний номер запроса" p321genHints:generationCode="outNumberGenerator" hints:readOnly="true"  />
+					<xs:element name="requestName" type="xs:string" hints:readOnly="true" hints:rus="Название запроса" hints:default="Запрос на предоставление сведений о факте осуществления трудовой деятельности" hints:widgetType="textArea" />
+					<xs:element name="requestState" type="xs:string" minOccurs="0" hints:readOnly="true" hints:rus="Статус запроса" />
+					<xs:element name="Sender" type="xs:string" minOccurs="0" hints:rus="Отправитель" hints:default="ИС «СМЭВ Полтавы 3 Марий Эл»" />
+					<xs:element name="Recipient" type="xs:string" minOccurs="0" hints:readOnly="true" hints:rus="Поставщик данных" hints:default="ПФР России" />
+					<xs:element name="Subdivision" type="xs:string" minOccurs="0" hints:readOnly="true" hints:rus="Подразделение" />
+					<xs:element name="Executor" type="xs:string" minOccurs="0" hints:readOnly="true" hints:rus="Исполнитель" />
+					<xs:element name="requestSendDate" type="xs:dateTime" minOccurs="0" hints:readOnly="true" hints:rus="Дата отправки запроса" />
+					<xs:element name="executionPlannedDate" type="xs:date" minOccurs="0" hints:readOnly="true" hints:rus="Планируемая дата исполнения" />
+					<xs:element name="responseReceiveDate" type="xs:dateTime" minOccurs="0" hints:readOnly="true" hints:rus="Дата и время получения ответа" />
+					<xs:element name="request" type="ct:WorkFactRequest" hints:readOnly="true" hints:rus="Данные запроса" />
+					<xs:element name="response" type="ct:WorkFactResponse" minOccurs="0" hints:readOnly="true" hints:rus="Данные ответа" />
+					<xs:element name="RequestRejected" type="xs:string" minOccurs="0" hints:readOnly="true" hints:rus="Причина отказа предоставления сведений" />
+					<xs:element name="Note" type="xs:string" minOccurs="0" hints:readOnly="true" hints:rus="Примечание" />
+				</xs:sequence>
+			</xs:complexType>
+	</xs:element>
+	</xs:schema>
